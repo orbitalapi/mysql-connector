@@ -1,0 +1,7 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/" # Location of your Maven project
+    schedule:
+      interval: "daily" # Check for updates daily
+    open-pull-requests-limit: 10
