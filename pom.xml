@@ -270,8 +270,8 @@
             </snapshots>
         </repository>
         <repository>
-            <id>vyne</id>
-            <url>https://repo.orbitalhq.com/snapshot</url>
+            <id>orbital</id>
+            <url>https://repo.orbitalhq.com/release</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
