@@ -5,5 +5,10 @@
          <username>${env.JOOQ_REPO_USERNAME}</username>
          <password>${env.JOOQ_REPO_PASSWORD}</password>
       </server>
+      <server>
+         <id>repo.orbitalhq.com</id>
+         <username>${env.AWS_ACCESS_KEY_ID}</username>
+         <password>${env.AWS_SECRET_ACCESS_KEY}</password>
+      </server>
    </servers>
 </settings>
