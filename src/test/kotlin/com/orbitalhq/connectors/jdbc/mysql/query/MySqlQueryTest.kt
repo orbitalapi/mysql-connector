@@ -31,11 +31,11 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
-import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import java.time.LocalDate
+import org.testcontainers.containers.MySQLContainer
 
 @Testcontainers
 @SpringBootTest(
@@ -58,17 +58,13 @@ class MySqlQueryTest {
         @Container
         @ServiceConnection
         val mysqlContainer = MySQLContainer("mysql:8.4.0")
-
-        @JvmStatic
-        @BeforeClass
-        fun setupClass() {
-            MySqlDbSupport.register()
-        }
     }
 
 
     @BeforeEach
     fun setup() {
+        MySqlDbSupport.register()
+
         mysqlContainer.waitingFor(Wait.forListeningPort())
         val connectionDetails = JdbcUrlCredentialsConnectionConfiguration(
             "movies",

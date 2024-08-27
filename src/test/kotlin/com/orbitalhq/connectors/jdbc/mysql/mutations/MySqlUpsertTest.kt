@@ -52,11 +52,6 @@ class MySqlUpsertTest {
 
 
    companion object {
-      @JvmStatic
-      @BeforeClass
-      fun setupClass() {
-         MySqlDbSupport.register()
-      }
       @JvmField
       @Container
       @ServiceConnection
@@ -65,6 +60,7 @@ class MySqlUpsertTest {
 
    @BeforeEach
    fun setup() {
+      MySqlDbSupport.register()
       mysqlContainer.waitingFor(Wait.forListeningPort())
       val connectionDetails = JdbcUrlCredentialsConnectionConfiguration(
          "movies",

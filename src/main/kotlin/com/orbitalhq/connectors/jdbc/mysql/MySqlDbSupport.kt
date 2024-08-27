@@ -35,7 +35,7 @@ import java.sql.DriverManager
 object MySqlDbSupport : DatabaseSupport{
 
    fun register() {
-      DatabaseConnectorRegistry.getDatabaseConnectorRegistry()
+      DatabaseSupport.register(MySqlDbSupport)
       DriverManager.registerDriver(DriverProxy(Driver()))
    }
 
