@@ -1,5 +1,6 @@
 package com.orbitalhq.connectors.jdbc.mysql
 
+import com.mysql.cj.jdbc.Driver
 import com.orbitalhq.connectors.config.jdbc.DatabaseDriverName
 import com.orbitalhq.connectors.config.jdbc.JdbcMetadataParams
 import com.orbitalhq.connectors.config.jdbc.JdbcUrlBuilder
@@ -8,11 +9,14 @@ import com.orbitalhq.connectors.jdbc.drivers.DatabaseDriverRegistry
 import com.orbitalhq.connectors.jdbc.drivers.DatabaseSupport
 import com.orbitalhq.connectors.jdbc.sql.dml.SqlOperation
 import com.orbitalhq.connectors.jdbc.sql.dml.SqlQuery
+import com.orbitalhq.plugins.jdbc.DriverProxy
 import com.orbitalhq.schemas.AttributeName
 import org.jooq.DSLContext
 import org.jooq.Field
 import org.jooq.RowN
 import org.jooq.impl.DSL
+import schemacrawler.tools.databaseconnector.DatabaseConnectorRegistry
+import java.sql.DriverManager
 
 /**
  * Documenting known issues:
@@ -31,7 +35,8 @@ import org.jooq.impl.DSL
 object MySqlDbSupport : DatabaseSupport{
 
    fun register() {
-      DatabaseSupport.register(MySqlDbSupport)
+      DatabaseConnectorRegistry.getDatabaseConnectorRegistry()
+      DriverManager.registerDriver(DriverProxy(Driver()))
    }
 
    override val driverName: DatabaseDriverName = "MYSQL"
