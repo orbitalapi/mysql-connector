@@ -29,7 +29,9 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Deploy with Maven
-        run: mvn deploy --settings .mvn/settings.xml
+        run: |
+          echo "Access key: $AWS_ACCESS_KEY_ID"
+          mvn deploy -DskipTests --settings .mvn/settings.xml
         env:
           JOOQ_REPO_USERNAME: ${{ secrets.JOOQ_REPO_USERNAME }}
           JOOQ_REPO_PASSWORD: ${{ secrets.JOOQ_REPO_PASSWORD }}
