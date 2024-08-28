@@ -2,6 +2,23 @@
 
 This repo contains a MySQL plugin for [Orbital](https://orbitalhq.com)
 
+## Environment config
+Due to classpath loading challenges with Java's `DriverManager`, you must set the following
+environment variable: `SC_WITHOUT_DATABASE_PLUGIN=mysql`.
+
+For example, in a `docker-compose.yml` file:
+
+```yaml
+services:
+   orbital:
+      image: orbitalhq/orbital:next
+      environment:
+         SC_WITHOUT_DATABASE_PLUGIN: mysql
+```
+
+This configures [SchemaCrawler](https://www.schemacrawler.com/) - the library we use for database introspection when importing
+databases - to work without the MySQL driver being present in the System classpath.
+
 ## Loading the plugin
 
 ### plugins.conf
