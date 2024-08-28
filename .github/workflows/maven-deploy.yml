@@ -28,6 +28,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Extract tag name
+        id: extract_tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Set Maven version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: mvn versions:set -DnewVersion=${{ env.TAG_NAME }}
+
       - name: Deploy with Maven
         run: mvn deploy --settings .mvn/settings.xml
         env:
