@@ -31,3 +31,8 @@ You can specify a custom path by specifying the `--vyne.plugins.path` parameter 
 --vyne.plugins.path=/opt/oribtal/plugins.conf
 ```
 
+Alternatively, loading via a URL:
+
+```
+--vyne.plugins.path=https://myserver.com/some-plugins.conf
+```
