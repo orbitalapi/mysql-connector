@@ -25,7 +25,7 @@
 
         <testcontainers.version>1.20.1</testcontainers.version>
         <junit.jupiter.version>5.9.2</junit.jupiter.version>
-        <junit.vintage.version>5.9.2</junit.vintage.version>
+        <junit.vintage.version>5.11.1</junit.vintage.version>
         <kotest.version>5.5.5</kotest.version>
     </properties>
     <dependencies>
